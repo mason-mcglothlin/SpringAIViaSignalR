@@ -3,11 +3,18 @@ package javaai;
 import com.springrts.ai.oo.*;
 import com.springrts.ai.oo.clb.*;
 import java.util.List;
+import microsoft.aspnet.signalr.client.*;
 
 public class MyJavaAI extends AbstractOOAI {
+    
+    private Connection connection;
 
     @Override
     public int init(int teamId, OOAICallback callback) {
+        connection = new Connection("http://localhost:8080/signalr");
+        connection.start();
+        connection.send("test");
+        connection.disconnect();
         return 0;
     }
 
