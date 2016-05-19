@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR;
 
 namespace SpringSignalRServer
 {
@@ -7,6 +9,12 @@ namespace SpringSignalRServer
         public void Send(string name, string message)
         {
             Clients.All.addMessage(name, message);
+        }
+
+        public override Task OnConnected()
+        {
+            Console.WriteLine("Client connected.");
+            return Task.CompletedTask;
         }
     }
 }

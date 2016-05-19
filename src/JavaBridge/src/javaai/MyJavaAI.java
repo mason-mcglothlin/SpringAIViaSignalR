@@ -3,15 +3,19 @@ package javaai;
 import com.springrts.ai.oo.*;
 import com.springrts.ai.oo.clb.*;
 import java.util.List;
-import microsoft.aspnet.signalr.client.*;
+import microsoft.aspnet.signalr.client.hubs.*;
 
 public class MyJavaAI extends AbstractOOAI {
 
     private OOAICallback Callback;
     
+    private HubConnection Hub;
+    
     @Override
     public int init(int teamId, OOAICallback callback) {
         Callback = callback;
+        Hub = new HubConnection("http://localhost:8080");
+        Hub.start();
         return 0;
     }
 
