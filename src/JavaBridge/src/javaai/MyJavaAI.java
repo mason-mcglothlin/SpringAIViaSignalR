@@ -6,15 +6,12 @@ import java.util.List;
 import microsoft.aspnet.signalr.client.*;
 
 public class MyJavaAI extends AbstractOOAI {
-    
-    private Connection connection;
 
+    private OOAICallback Callback;
+    
     @Override
     public int init(int teamId, OOAICallback callback) {
-        connection = new Connection("http://localhost:8080/signalr");
-        connection.start();
-        connection.send("test");
-        connection.disconnect();
+        Callback = callback;
         return 0;
     }
 
@@ -131,6 +128,7 @@ public class MyJavaAI extends AbstractOOAI {
 
     @Override
     public int update(int i) {
+        Callback.getGame().sendTextMessage("Hello, worlds!", 0);
         return 0;
     }
 
