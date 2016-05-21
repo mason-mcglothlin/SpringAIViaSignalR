@@ -3,19 +3,34 @@ package javaai;
 import com.springrts.ai.oo.*;
 import com.springrts.ai.oo.clb.*;
 import java.util.List;
-import microsoft.aspnet.signalr.client.hubs.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.Writer;
+import java.io.IOException;
 
-public class MyJavaAI extends AbstractOOAI {
-
-    private OOAICallback Callback;
+public class JavaBridge extends AbstractOOAI {
     
-    private HubConnection Hub;
+    private OOAICallback Callback;
+    private final String LogLocation = "C:\\Users\\msm8b\\Documents\\JavaBridgeLog.txt";
+    
+    private void Log(String message) {
+        try
+        {
+            Writer output = new BufferedWriter(new FileWriter(LogLocation, true));
+            output.append(message);
+            output.close();
+        }
+        catch(IOException ex){
+            //cant do anythying here
+        }
+    }
+
+      
     
     @Override
     public int init(int teamId, OOAICallback callback) {
         Callback = callback;
-        Hub = new HubConnection("http://localhost:8080");
-        Hub.start();
+        Log("initted");
         return 0;
     }
 
