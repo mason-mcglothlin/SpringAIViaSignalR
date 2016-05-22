@@ -7,6 +7,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.io.IOException;
+import microsoft.aspnet.signalr.client.hubs.*;
 
 public class JavaBridge extends AbstractOOAI {
     
@@ -17,16 +18,14 @@ public class JavaBridge extends AbstractOOAI {
         try
         {
             Writer output = new BufferedWriter(new FileWriter(LogLocation, true));
-            output.append(message);
+            output.append(message + "\n");
             output.close();
         }
         catch(IOException ex){
             //cant do anythying here
         }
     }
-
-      
-    
+        
     @Override
     public int init(int teamId, OOAICallback callback) {
         Callback = callback;
