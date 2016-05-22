@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringSignalRServer", "Spri
 EndProject
 Project("{BE0A4C86-FC82-4F70-8ED6-D24C8B13E7BF}") = "JavaBridge", "JavaBridge\JavaBridge.javaproj", "{99386F7E-77FF-421A-9396-C934F9C631B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringAIInterface", "SpringAIInterface\SpringAIInterface.csproj", "{8A2C4D73-F0EF-4F78-869D-44CDDDD348F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{99386F7E-77FF-421A-9396-C934F9C631B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99386F7E-77FF-421A-9396-C934F9C631B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99386F7E-77FF-421A-9396-C934F9C631B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2C4D73-F0EF-4F78-869D-44CDDDD348F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2C4D73-F0EF-4F78-869D-44CDDDD348F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2C4D73-F0EF-4F78-869D-44CDDDD348F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2C4D73-F0EF-4F78-869D-44CDDDD348F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

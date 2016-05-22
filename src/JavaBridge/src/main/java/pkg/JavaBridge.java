@@ -16,6 +16,7 @@ public class JavaBridge extends AbstractOOAI {
     
     private OOAICallback Callback;
     private static final String LogLocation = "C:\\Users\\msm8b\\Documents\\JavaBridgeLog.txt";
+	private HubConnection Connection; 
     private HubProxy MyHubProxy;
     
     public static void InitializeLogFile()
@@ -45,10 +46,10 @@ public class JavaBridge extends AbstractOOAI {
     private void InitializeSignalR()
     {
         Log("Initializing SignalR");
-        HubConnection connection = new HubConnection("http://localhost:8080");
-        MyHubProxy = connection.createHubProxy("GameHub");
-        ClientTransport transport = new ServerSentEventsTransport(connection.getLogger());
-        SignalRFuture<Void> awaitConnection = connection.start(transport);
+        Connection = new HubConnection("http://localhost:8080");
+        MyHubProxy = Connection.createHubProxy("GameHub");
+        ClientTransport transport = new ServerSentEventsTransport(Connection.getLogger());
+        SignalRFuture<Void> awaitConnection = Connection.start(transport);
         // when do we close the connection?!
         try
         {
@@ -157,12 +158,12 @@ public class JavaBridge extends AbstractOOAI {
     }
 
     @Override
-    public int unitDestroyed(Unit unit, Unit unit1) {
+    public int unitDestroyed(Unit unit, Unit attacker) {
         return 0;
     }
 
     @Override
-    public int unitDamaged(Unit unit, Unit unit1, float f, AIFloat3 aif, WeaponDef wd, boolean bln) {
+    public int unitDamaged(Unit unit, Unit attacker, float damage, AIFloat3 directionOfDamage, WeaponDef weaponUsed, boolean paralyzer) {
         return 0;
     }
 
@@ -177,27 +178,28 @@ public class JavaBridge extends AbstractOOAI {
     }
 
     @Override
-    public int unitCreated(Unit unit, Unit unit1) {
+    public int unitCreated(Unit unit, Unit builder) {
         return 0;
     }
 
     @Override
-    public int message(int i, String string) {
+    public int message(int player, String message) {
         return 0;
     }
 
     @Override
-    public int update(int i) {
-        if(i == 0 )
+    public int update(int frame) {
+        if(frame == 0 )
         {
             Callback.getGame().sendTextMessage("Hello, world!", 0);
         }
-        MyHubProxy.invoke("Update", i);
+        MyHubProxy.invoke("Update", frame);
         return 0;
     }
 
     @Override
     public int release(int i) {
+		//Connection.Stop();
         return 0;
     }
 
@@ -207,7 +209,7 @@ public class JavaBridge extends AbstractOOAI {
     }
 
     @Override
-    public int luaMessage(String string) {
+    public int luaMessage(String inData) {
         return 0;
     }
 }
