@@ -46,7 +46,7 @@ public class JavaBridge extends AbstractOOAI {
     {
         Log("Initializing SignalR");
         HubConnection connection = new HubConnection("http://localhost:8080");
-        MyHubProxy = connection.createHubProxy("MyHub");
+        MyHubProxy = connection.createHubProxy("GameHub");
         ClientTransport transport = new ServerSentEventsTransport(connection.getLogger());
         SignalRFuture<Void> awaitConnection = connection.start(transport);
         // when do we close the connection?!
