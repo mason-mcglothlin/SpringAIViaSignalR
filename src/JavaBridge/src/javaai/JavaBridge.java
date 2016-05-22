@@ -82,78 +82,78 @@ public class JavaBridge extends AbstractOOAI {
     }
 
     @Override
-    public int commandFinished(Unit arg0, int i, int i1) {
+    public int commandFinished(Unit unit, int commandId, int commandTopicId) {
         return 0;
     }
 
     @Override
-    public int enemyCreated(Unit arg0) {
+    public int enemyCreated(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int enemyDamaged(Unit unit, Unit unit1, float f, AIFloat3 aif, WeaponDef wd, boolean bln) {
+    public int enemyDamaged(Unit enemy, Unit attacker, float damage, AIFloat3 directionOfAttack, WeaponDef weaponUsed, boolean paralyzer) {
         return 0;
     }
 
     @Override
-    public int enemyDestroyed(Unit unit, Unit uni1) {
+    public int enemyDestroyed(Unit enemy, Unit attacker) {
 
         return 0;
     }
 
     @Override
-    public int enemyEnterLOS(Unit unit) {
+    public int enemyEnterLOS(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int enemyEnterRadar(Unit unit) {
+    public int enemyEnterRadar(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int enemyFinished(Unit unit) {
+    public int enemyFinished(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int enemyLeaveLOS(Unit unit) {
+    public int enemyLeaveLOS(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int enemyLeaveRadar(Unit unit) {
+    public int enemyLeaveRadar(Unit enemy) {
         return 0;
     }
 
     @Override
-    public int save(String string) {
+    public int save(String file) {
         return 0;
     }
 
     @Override
-    public int seismicPing(AIFloat3 aif, float f) {
+    public int seismicPing(AIFloat3 position, float strength) {
         return 0;
     }
 
     @Override
-    public int playerCommand(List<Unit> list, int i, int i1) {
+    public int playerCommand(List<Unit> units, int commandTopicId, int playerId) {
         return 0;
     }
 
     @Override
-    public int weaponFired(Unit unit, WeaponDef wd) {
+    public int weaponFired(Unit unit, WeaponDef weaponUsed) {
         return 0;
     }
 
     @Override
-    public int unitCaptured(Unit unit, int i, int i1) {
+    public int unitCaptured(Unit unit, int oldTeamId, int newTeamId) {
         return 0;
     }
 
     @Override
-    public int unitGiven(Unit unit, int i, int i1) {
+    public int unitGiven(Unit unit, int oldTeamId, int newTeamId) {
         return 0;
     }
 
@@ -204,7 +204,7 @@ public class JavaBridge extends AbstractOOAI {
     }
 
     @Override
-    public int load(String string) {
+    public int load(String file) {
         return 0;
     }
 
