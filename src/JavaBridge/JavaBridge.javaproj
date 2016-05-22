@@ -57,6 +57,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\main\java\pkg\JavaBridge.java">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <JarReference Include="C:\Code\SpringAIViaSignalR\src\JavaBridge\lib\AIInterface-src.jar">
       <IncludeInBuild>True</IncludeInBuild>
       <Private>False</Private>
@@ -81,6 +86,10 @@
       <IncludeInBuild>True</IncludeInBuild>
       <Private>False</Private>
     </JarReference>
+    <JarReference Include="C:\Code\SpringAIViaSignalR\src\JavaBridge\lib\SkirmishAI-src.jar">
+      <IncludeInBuild>True</IncludeInBuild>
+      <Private>False</Private>
+    </JarReference>
     <JarReference Include="C:\Code\SpringAIViaSignalR\src\JavaBridge\lib\vecmath-src.jar">
       <IncludeInBuild>True</IncludeInBuild>
       <Private>False</Private>
@@ -89,11 +98,6 @@
       <IncludeInBuild>True</IncludeInBuild>
       <Private>False</Private>
     </JarReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="src\main\java\pkg\JavaBridge.java">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

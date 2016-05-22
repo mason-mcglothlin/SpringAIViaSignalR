@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpringSignalRServer", "SpringSignalRServer\SpringSignalRServer.csproj", "{E4BD871F-69DE-43A6-A80A-B906EB94E480}"
 EndProject
-Project("{BE0A4C86-FC82-4F70-8ED6-D24C8B13E7BF}") = "JavaBridge", "ClassLibrary1\JavaBridge.javaproj", "{99386F7E-77FF-421A-9396-C934F9C631B6}"
+Project("{BE0A4C86-FC82-4F70-8ED6-D24C8B13E7BF}") = "JavaBridge", "JavaBridge\JavaBridge.javaproj", "{99386F7E-77FF-421A-9396-C934F9C631B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
