@@ -1,1 +1,0 @@
-copy bin\Debug\SkirmishAI.jar "%USERPROFILE%\Documents\My Games\Spring\AI\Skirmish\JavaBridge\0.1\SkirmishAI.jar"

@@ -13,12 +13,12 @@ import microsoft.aspnet.signalr.client.hubs.*;
 import microsoft.aspnet.signalr.client.transport.*;
 
 public class JavaBridge extends AbstractOOAI {
-    
+
     private OOAICallback Callback;
     private static final String LogLocation = "C:\\Users\\msm8b\\Documents\\JavaBridgeLog.txt";
-	private HubConnection Connection; 
+    private HubConnection Connection;
     private HubProxy MyHubProxy;
-    
+
     public static void InitializeLogFile()
     {
         try
@@ -30,7 +30,7 @@ public class JavaBridge extends AbstractOOAI {
             //cant do anything here
         }
     }
-    
+
     public static void Log(String message) {
         try
         {
@@ -42,7 +42,7 @@ public class JavaBridge extends AbstractOOAI {
             //cant do anything here
         }
     }
-    
+
     private void InitializeSignalR()
     {
         Log("Initializing SignalR");
@@ -57,15 +57,15 @@ public class JavaBridge extends AbstractOOAI {
         }
         catch (InterruptedException e)
         {
-            Log(e.getMessage());           
+            Log(e.getMessage());
         }
         catch (ExecutionException e)
         {
-             Log(e.getMessage());
+            Log(e.getMessage());
         }
         Log("SignalR initialized");
     }
-        
+
     @Override
     public int init(int teamId, OOAICallback callback) {
         InitializeLogFile();
@@ -199,7 +199,7 @@ public class JavaBridge extends AbstractOOAI {
 
     @Override
     public int release(int i) {
-		//Connection.Stop();
+        Connection.stop();
         return 0;
     }
 
