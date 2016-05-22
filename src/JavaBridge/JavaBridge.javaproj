@@ -52,6 +52,12 @@
     <None Include="src\main\java\pkg\JavaBridge.java" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Deploy.cmd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="DeployFull.cmd">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="packages.config">
       <SubType>Content</SubType>
     </Content>
