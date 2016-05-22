@@ -13,13 +13,19 @@ namespace SpringSignalRServer
 
         public void Update(int frame)
         {
-            Console.WriteLine("Update called.");
+            Console.WriteLine($"Update called. Frame: {frame}");
         }
 
         public override Task OnConnected()
         {
-            Console.WriteLine("Client connected.");
-            return Task.CompletedTask;
+            Console.WriteLine($"Client connected {Context.ConnectionId}");
+            return base.OnConnected();
+        }
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            Console.WriteLine($"Client disconnected {Context.ConnectionId}");
+            return base.OnDisconnected(stopCalled);
         }
     }
 }

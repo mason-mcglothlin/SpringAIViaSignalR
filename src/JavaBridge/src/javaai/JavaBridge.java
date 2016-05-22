@@ -7,14 +7,30 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.Writer;
 import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+import microsoft.aspnet.signalr.client.*;
 import microsoft.aspnet.signalr.client.hubs.*;
+import microsoft.aspnet.signalr.client.transport.*;
 
 public class JavaBridge extends AbstractOOAI {
     
     private OOAICallback Callback;
-    private final String LogLocation = "C:\\Users\\msm8b\\Documents\\JavaBridgeLog.txt";
+    private static final String LogLocation = "C:\\Users\\msm8b\\Documents\\JavaBridgeLog.txt";
+    private HubProxy MyHubProxy;
     
-    private void Log(String message) {
+    public static void InitializeLogFile()
+    {
+        try
+        {
+            Writer output = new BufferedWriter(new FileWriter(LogLocation));
+            output.close();
+        }
+        catch(IOException ex){
+            //cant do anything here
+        }
+    }
+    
+    public static void Log(String message) {
         try
         {
             Writer output = new BufferedWriter(new FileWriter(LogLocation, true));
@@ -22,14 +38,40 @@ public class JavaBridge extends AbstractOOAI {
             output.close();
         }
         catch(IOException ex){
-            //cant do anythying here
+            //cant do anything here
         }
+    }
+    
+    private void InitializeSignalR()
+    {
+        Log("Initializing SignalR");
+        HubConnection connection = new HubConnection("http://localhost:8080");
+        MyHubProxy = connection.createHubProxy("MyHub");
+        ClientTransport transport = new ServerSentEventsTransport(connection.getLogger());
+        SignalRFuture<Void> awaitConnection = connection.start(transport);
+        // when do we close the connection?!
+        try
+        {
+            awaitConnection.get();
+        }
+        catch (InterruptedException e)
+        {
+            Log(e.getMessage());           
+        }
+        catch (ExecutionException e)
+        {
+             Log(e.getMessage());
+        }
+        Log("SignalR initialized");
     }
         
     @Override
     public int init(int teamId, OOAICallback callback) {
+        InitializeLogFile();
+        Log("Initializing");
+        InitializeSignalR();
         Callback = callback;
-        Log("initted");
+        Log("Initialized");
         return 0;
     }
 
@@ -146,7 +188,11 @@ public class JavaBridge extends AbstractOOAI {
 
     @Override
     public int update(int i) {
-        Callback.getGame().sendTextMessage("Hello, worlds!", 0);
+        if(i == 0 )
+        {
+            Callback.getGame().sendTextMessage("Hello, world!", 0);
+        }
+        MyHubProxy.invoke("Update", i);
         return 0;
     }
 
